@@ -1,30 +1,39 @@
-export const assets = [
-        "/public/bicycle1.png",
-        "/public/bicycle2.png",
-        "/public/bike1.png",
-        "/public/bridge1.png",
-        "/public/bridge2.png",
-        "/public/bridge3.png",
-        "/public/bridge4.png",
-        "/public/bus1.png",
-        "/public/bus2.png",
-        "/public/bus3.png",
-        "/public/car1.png",
-        "/public/car2.png",
-        "/public/car3.png",
-        "/public/car4.png",
-        "/public/person1.png",
-        "/public/person2.png",
-        "/public/street1.png",
-        "/public/street2.png",
-        "/public/street3.png",
-        "/public/street4.png",
-        "/public/street5.png",
-        "/public/tollbooth1.png",
-        "/public/tollbooth2.png",
-        "/public/trafficlight.png",
-        "/public/truck1.png",
-        "/public/truck2.png",
-        "/public/truck3.png",
-        "/public/truck4.png",
+export const vehicles = [
+        "/public/vehicles/bicycle1.png",
+        "/public/vehicles/bicycle2.png",
+        "/public/vehicles/bike1.png",
+        "/public/vehicles/bus1.png",
+        "/public/vehicles/bus2.png",
+        "/public/vehicles/bus3.png",
+        "/public/vehicles/car1.png",
+        "/public/vehicles/car2.png",
+        "/public/vehicles/car3.png",
+        "/public/vehicles/car4.png",
+        "/public/vehicles/truck1.png",
+        "/public/vehicles/truck2.png",
+        "/public/vehicles/truck3.png",
+        "/public/vehicles/truck4.png",
+]
+
+export const scenarios = [
+    "/public/scenarios/bridge1.png",
+    "/public/scenarios/bridge2.png",
+    "/public/scenarios/bridge3.png",
+    "/public/scenarios/bridge4.png",
+    "/public/scenarios/street1.png",
+    "/public/scenarios/street2.png",
+    "/public/scenarios/street3.png",
+    "/public/scenarios/street4.png",
+    "/public/scenarios/street5.png",
+]
+
+export const traffic = [
+    "/public/traffic/tollbooth1.png",
+    "/public/traffic/tollbooth2.png",
+    "/public/traffic/trafficlight.png",
+]
+
+export const people = [
+    "/public/people/person1.png",
+    "/public/people/person2.png",
 ]

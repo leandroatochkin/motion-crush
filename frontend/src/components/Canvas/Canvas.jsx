@@ -21,15 +21,21 @@ const Canvas = ({ children }) => {
         ref={canvasRef}
         style={{
           position: "relative",
-          width: "800px",
-          height: "600px",
-          border: "1px solid black",
+          width: "100%",
+          height: "100vh",
+          border: "5px dashed lightgray",
           overflow: "hidden",
         }}
       >
         {children}
       </div>
-      <button onClick={handleScreenshot}>Download JPG</button>
+      <button onClick={handleScreenshot}
+      style={{
+        position: "absolute",
+        top: "10px",
+        left: "10px",
+      }}
+      >Download JPG</button>
     </div>
   );
 };
