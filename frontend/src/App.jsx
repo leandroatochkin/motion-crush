@@ -49,6 +49,7 @@ const App = () => {
         width: "100vw",
         height: "100vh",
         overflow: "hidden",
+        backgroundColor: "darkslategray"
       }}
     >
       <div style={{ width: "70%", height: "100vh" }}>
@@ -73,12 +74,19 @@ const App = () => {
           overflow: "scroll",
           scrollbarWidth: "none",
           width: "25%",
+          alignItems: "center"
         }}
       >
         {/* Category Selector */}
         <select
           onChange={(e) => setSelectedCategory(e.target.value)}
           value={selectedCategory}
+          style={{
+            width: '80%',
+            height: '3.5rem',
+            fontSize: '2rem'
+          }}
+
         >
           {Object.entries(categories).map(([key, { name }]) => (
             <option key={key} value={key}>
