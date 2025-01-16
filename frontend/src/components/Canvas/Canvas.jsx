@@ -17,7 +17,7 @@ const Canvas = ({ children }) => {
   };
 
   return (
-    <div>
+    <div className={style.container}>
       <div
         ref={canvasRef}
         className={style.canvasContainer}
