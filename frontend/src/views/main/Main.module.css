@@ -1,0 +1,135 @@
+@media only screen and (min-width: 768px) {
+    /* App.css */
+.appContainer {
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    background-color: darkslategray;
+  }
+  
+  .canvasContainer {
+    width: 70%;
+    height: 100vh;
+  }
+  
+  .sidebar {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    overflow-y: scroll;
+    scrollbar-width: none;
+    width: 25%;
+    align-items: center;
+  }
+  
+  .categorySelector {
+    width: 80%;
+    height: 3.5rem;
+    font-size: 2rem;
+  }
+  
+  .assetsDisplay {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 10px;
+    height: 100%;
+    width: 100%;
+  }
+  
+  .assetItem {
+    background-size: cover;
+    width: 200px;
+    height: 150px;
+    cursor: pointer;
+  }
+  
+  .diagonalBar {
+    width: 10%;
+    height: 100vh;
+  }
+  
+  .diagonalBarContent {
+    top: 0;
+    height: 70%;
+    clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+    background-color: red;
+  }
+  
+  .diagonalBarTitle {
+    transform: rotate(90deg);
+    width: 100%;
+    white-space: nowrap;
+    padding-top: 60%;
+    padding-left: 70%;
+  }
+}
+
+@media only screen and (max-width: 767px) {
+    /* App.css */
+.appContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    background-color: darkslategray;
+  }
+  
+  .canvasContainer {
+    width: 100vw;
+    height: 100%;
+  }
+  
+  .sidebar {
+    display: flex;
+    flex-direction: column;
+    height: 40vh;
+    width: 100vw;
+    overflow-x: auto;
+    scrollbar-width: none;
+    align-items: center;
+  }
+  
+  .categorySelector {
+    width: 80%;
+    height: 3.5rem;
+    font-size: 2rem;
+  }
+  
+  .assetsDisplay {
+    display: flex;
+    height: 100%;
+    width: 100vw;
+  }
+  
+  .assetItem {
+    background-size: cover;
+    width: 200px;
+    height: 150px;
+    cursor: pointer;
+  }
+  
+  .diagonalBar {
+    width: 100vw;
+    height: 5vh;
+  }
+  
+  .diagonalBarContent {
+    top: 0;
+    height: 70%;
+    clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+    background-color: red;
+  }
+  
+  .diagonalBarTitle {
+    transform: rotate(90deg);
+    width: 100%;
+    white-space: nowrap;
+    padding-top: 60%;
+    padding-left: 70%;
+  }
+}
+  

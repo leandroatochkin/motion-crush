@@ -1,5 +1,6 @@
 import React, { useRef } from "react";
 import {toJpeg} from "html-to-image";
+import style from './Canvas.module.css'
 
 const Canvas = ({ children }) => {
   const canvasRef = useRef(null);
@@ -19,13 +20,7 @@ const Canvas = ({ children }) => {
     <div>
       <div
         ref={canvasRef}
-        style={{
-          position: "relative",
-          width: "100%",
-          height: "100vh",
-          border: "5px dashed lightgray",
-          overflow: "hidden",
-        }}
+        className={style.canvasContainer}
       >
         {children}
       </div>

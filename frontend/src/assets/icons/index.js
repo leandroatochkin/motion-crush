@@ -6,3 +6,4 @@ export {default as ZoomIn} from './ZoomIn';
 export {default as ZoomOut} from './ZoomOut';
 export {default as Trash} from './Trash';
 export {default as Hoist} from './Hoist';
+export {default as Mirror} from './Mirror';
