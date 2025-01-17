@@ -116,3 +116,12 @@ export const cars = [
         '/public/trucks/truck8.png',
         '/public/trucks/truck9.png',
     ]
+
+    export const users = {
+        estudio_uno: {
+            username: 'estudio_uno',
+            password: '123456',
+        }
+    }
+
+    

@@ -7,3 +7,8 @@ export {default as ZoomOut} from './ZoomOut';
 export {default as Trash} from './Trash';
 export {default as Hoist} from './Hoist';
 export {default as Mirror} from './Mirror';
+export {default as Download} from './Download';
+export {default as ClearPanel} from './ClearPanel';
+export {default as Eraser} from './Eraser';
+export {default as EyeOpen} from './EyeOpen';
+export {default as EyeClosed} from './EyeClosed';

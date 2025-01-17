@@ -34,6 +34,7 @@ const categories = {
 const Main = () => {
   const [selectedAsset, setSelectedAsset] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState("cars");
+  const [clearAssetPanel, setClearAssetPanel] = useState(false)
 
   const handleRemoveAsset = (index) => {
     setSelectedAsset(selectedAsset.filter((asset, i) => i !== index));
@@ -43,18 +44,30 @@ const Main = () => {
     console.log(selectedCategory);
   }, [selectedCategory]);
 
+  const handleClearPanel = () =>{
+    setClearAssetPanel(true)
+    setTimeout(() => setClearAssetPanel(false), 0)
+  }
+ 
+ const handleClearCanva = () => {
+    if(confirm('¿Está seguro que quiere borrar todo?')){
+        setSelectedAsset([])
+    }
+ }
+
   return (
     <div
       className={style.appContainer}
     >
       <div className={style.canvasContainer}>
-        <Canvas>
+        <Canvas handleClearPanel={handleClearPanel} handleClearCanva={handleClearCanva}>
           {selectedAsset &&
             selectedAsset.map((src, index) => (
               <Asset
                 key={index}
                 src={src}
                 handleRemoveAsset={() => handleRemoveAsset(index)}
+                clear={clearAssetPanel}
               />
             ))}
         </Canvas>

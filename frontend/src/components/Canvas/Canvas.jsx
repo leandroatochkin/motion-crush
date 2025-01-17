@@ -1,8 +1,9 @@
 import React, { useRef } from "react";
 import {toJpeg} from "html-to-image";
+import { Download, ClearPanel, Eraser } from "../../assets/icons";
 import style from './Canvas.module.css'
 
-const Canvas = ({ children }) => {
+const Canvas = ({ children, handleClearPanel, handleClearCanva }) => {
   const canvasRef = useRef(null);
 
   const handleScreenshot = () => {
@@ -24,14 +25,28 @@ const Canvas = ({ children }) => {
       >
         {children}
       </div>
+      <div
+            style={{
+              position: "absolute",
+              top: "10px",
+              left: '10px'
+            }}
+      >
       <button onClick={handleScreenshot}
-      style={{
-        position: "absolute",
-        top: "10px",
-        left: "10px",
-      }}
-      >Download JPG</button>
+      >
+        <Download />
+      </button>
+      <button onClick={handleClearPanel}
+      >
+        <ClearPanel />
+      </button>
+      <button onClick={handleClearCanva}
+      >
+        <Eraser />
+      </button>
+      </div>
     </div>
+    
   );
 };
 
