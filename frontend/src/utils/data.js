@@ -121,6 +121,7 @@ export const cars = [
         estudio_uno: {
             username: 'estudio_uno',
             password: '123456',
+            name: 'Estudio Pirulito'
         }
     }
 

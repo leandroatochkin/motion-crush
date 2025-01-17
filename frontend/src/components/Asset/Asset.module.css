@@ -17,4 +17,15 @@
         
     }
 }
-@media only screen and (min-width: 768px){}
+@media only screen and (min-width: 768px){
+    .assetPanel{
+        display: grid;
+        grid-template-columns: repeat(4, 1fr);
+        width:  15vw;
+        z-index: 999;
+        position: absolute;
+        gap: 10px;
+    }
+
+
+}

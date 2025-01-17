@@ -1,53 +1,85 @@
 import React, { useRef } from "react";
-import {toJpeg} from "html-to-image";
+import { toJpeg } from "html-to-image";
 import { Download, ClearPanel, Eraser } from "../../assets/icons";
-import style from './Canvas.module.css'
+import { userStore } from "../../utils/userStore";
+import style from "./Canvas.module.css";
 
 const Canvas = ({ children, handleClearPanel, handleClearCanva }) => {
   const canvasRef = useRef(null);
+  const watermarkRef = useRef(null);
+  const userName = userStore((state)=>state.username)
+
 
   const handleScreenshot = () => {
     if (canvasRef.current) {
-        toJpeg(canvasRef.current, { quality: 0.95 }).then((dataUrl) => {
-        const link = document.createElement("a");
-        link.href = dataUrl;
-        link.download = "arrangement.jpg";
-        link.click();
-      });
+      // Temporarily show the watermark for screenshot
+      if (watermarkRef.current) {
+        watermarkRef.current.style.display = "block";
+      }
+
+      toJpeg(canvasRef.current, { quality: 0.95 })
+        .then((dataUrl) => {
+          const link = document.createElement("a");
+          link.href = dataUrl;
+          link.download = "arrangement.jpg";
+          link.click();
+        })
+        .finally(() => {
+          // Hide the watermark after screenshot
+          if (watermarkRef.current) {
+            watermarkRef.current.style.display = "none";
+          }
+        });
     }
   };
 
   return (
     <div className={style.container}>
-      <div
-        ref={canvasRef}
-        className={style.canvasContainer}
-      >
+      <div ref={canvasRef} className={style.canvasContainer}>
         {children}
+        {/* Watermark */}
+        <div
+          ref={watermarkRef}
+          style={{
+            position: "absolute",
+            bottom: "10px",
+            right: "10px",
+            fontSize: "20px",
+            fontWeight: "bold",
+            color: "rgba(255, 255, 255, 0.5)",
+            pointerEvents: "none",
+            display: "none",
+            zIndex: '999999' // Hidden during normal rendering
+          }}
+        >
+          {`Imagen compuesta por ${userName}`}
+        </div>
       </div>
       <div
-            style={{
-              position: "absolute",
-              top: "10px",
-              left: '10px'
-            }}
+        style={{
+          position: "absolute",
+          top: "10px",
+          left: "10px",
+          display: "flex",
+          gap: "10px",
+        }}
       >
-      <button onClick={handleScreenshot}
-      >
-        <Download />
-      </button>
-      <button onClick={handleClearPanel}
-      >
-        <ClearPanel />
-      </button>
-      <button onClick={handleClearCanva}
-      >
-        <Eraser />
-      </button>
+        {/* Screenshot Button */}
+        <button onClick={handleScreenshot}>
+          <Download />
+        </button>
+        {/* Clear Panel Button */}
+        <button onClick={handleClearPanel}>
+          <ClearPanel />
+        </button>
+        {/* Clear Canvas Button */}
+        <button onClick={handleClearCanva}>
+          <Eraser />
+        </button>
       </div>
     </div>
-    
   );
 };
 
 export default Canvas;
+

@@ -2,6 +2,8 @@
     /* App.css */
 .appContainer {
     display: flex;
+    justify-content: center;
+    align-items: center;
     width: 100vw;
     height: 100vh;
     overflow: hidden;
@@ -47,10 +49,12 @@
   .diagonalBar {
     width: 10%;
     height: 100vh;
+    padding: 0;
+    margin: 0;
   }
   
   .diagonalBarContent {
-    top: 0;
+    margin-top: -22%;
     height: 70%;
     clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
     background-color: red;
@@ -62,6 +66,7 @@
     white-space: nowrap;
     padding-top: 60%;
     padding-left: 70%;
+    z-index: 9999;
   }
 }
 

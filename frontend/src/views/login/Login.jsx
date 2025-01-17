@@ -16,12 +16,14 @@ const Login = () => {
     const navigate = useNavigate()
 
     const setLoggedIn = userStore((state)=>state.setLoginStatus)
+    const setUsername = userStore((state)=>state.setUsername)
 
     const login = (inputUsername, inputPassword) => {
 
         for (const key in users) {
           if (users[key].username === inputUsername && users[key].password === inputPassword) {
             setLoggedIn(true)
+            setUsername(users[key].name)
             navigate('/main')
           }
         }
