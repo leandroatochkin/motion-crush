@@ -11,7 +11,7 @@ const Login = () => {
         password: ''
     })
 
-    useEffect(()=>console.log(loginData), [loginData])
+ 
 
     const navigate = useNavigate()
 

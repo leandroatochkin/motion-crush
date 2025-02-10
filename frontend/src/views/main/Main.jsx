@@ -2,40 +2,64 @@ import React, { useEffect, useState } from "react";
 import Canvas from "../../components/Canvas/Canvas";
 import Asset from "../../components/Asset/Asset";
 import {
-  animals,
-  arrows,
-  bikes,
-  bridges,
-  busses,
-  cars,
-  events,
-  pedestrians,
-  streets,
-  trafficlights,
-  trucks,
+  animals_3d,
+  arrows_3d,
+  bikes_3d,
+  bridges_3d,
+  busses_3d,
+  cars_3d,
+  events_3d,
+  pedestrians_3d,
+  streets_3d,
+  trafficlights_3d,
+  trucks_3d,
+  animals_aerial,
+  bikes_aerial,
+  busses_aerial,
+  cars_aerial,
+  events_aerial,
+  streets_aerial,
+  trucks_aerial
 } from '../../utils/data';
 import style from './Main.module.css'
 import { userStore } from "../../utils/userStore";
+import { TopView, Isometric, Help } from "../../assets/icons";
+import HelpModal from "../../components/HelpModal/HelpModal";
+
 
 // Mapping internal keys to human-readable labels
-const categories = {
-  animals: { name: "Animales", data: animals },
-  arrows: { name: "Flechas", data: arrows },
-  bikes: { name: "Bicicletas & Motos", data: bikes },
-  bridges: { name: "Puentes", data: bridges },
-  busses: { name: "Colectivos", data: busses },
-  cars: { name: "Autos", data: cars },
-  events: { name: "Eventos", data: events },
-  pedestrians: { name: "Peatones", data: pedestrians },
-  streets: { name: "Calles & Rutas", data: streets },
-  trafficlights: { name: "Semáforos", data: trafficlights },
-  trucks: { name: "Camiones", data: trucks },
+const categories_3d = {
+  animals: { name: "Animales", data: animals_3d },
+  arrows: { name: "Flechas", data: arrows_3d },
+  bikes: { name: "Bicicletas & Motos", data: bikes_3d },
+  bridges: { name: "Puentes", data: bridges_3d },
+  busses: { name: "Colectivos", data: busses_3d },
+  cars: { name: "Autos", data: cars_3d },
+  events: { name: "Eventos", data: events_3d },
+  pedestrians: { name: "Peatones", data: pedestrians_3d },
+  streets: { name: "Calles & Rutas", data: streets_3d },
+  trafficlights: { name: "Semáforos", data: trafficlights_3d },
+  trucks: { name: "Camiones", data: trucks_3d },
+};
+
+
+const categories_aerial = {
+  animals: { name: "Animales", data: animals_aerial },
+  bikes: { name: "Bicicletas & Motos", data: bikes_aerial },
+  bridges: { name: "Puentes", data: bikes_aerial },
+  busses: { name: "Colectivos", data: busses_aerial },
+  cars: { name: "Autos", data: cars_aerial },
+  events: { name: "Eventos", data: events_aerial },
+  streets: { name: "Calles & Rutas", data: streets_aerial },
+  trucks: { name: "Camiones", data: trucks_aerial },
 };
 
 const Main = () => {
   const [selectedAsset, setSelectedAsset] = useState([]);
   const [selectedCategory, setSelectedCategory] = useState("cars");
   const [clearAssetPanel, setClearAssetPanel] = useState(false)
+  const [currentView, setCurrentView] = useState(categories_3d)
+  const [openModal, setOpenModal] = useState(false)
 
   const loggedIn = userStore((state)=>state.loggedIn)
 
@@ -43,9 +67,7 @@ const Main = () => {
     setSelectedAsset(selectedAsset.filter((asset, i) => i !== index));
   };
 
-  useEffect(() => {
-    console.log(selectedCategory);
-  }, [selectedCategory]);
+
 
   const handleClearPanel = () =>{
     setClearAssetPanel(true)
@@ -60,6 +82,7 @@ const Main = () => {
 
   return (
     <>
+    {openModal && <HelpModal closeFunction={setOpenModal}/>}
     {loggedIn ? (
         <div
         className={style.appContainer}
@@ -83,24 +106,30 @@ const Main = () => {
           className={style.sidebar}
         >
           {/* Category Selector */}
-          <select
+              <div className={style.selectContainer}>
+              <select
             onChange={(e) => setSelectedCategory(e.target.value)}
             value={selectedCategory}
             className={style.categorySelector}
   
           >
-            {Object.entries(categories).map(([key, { name }]) => (
+            {Object.entries(currentView).map(([key, { name }]) => (
               <option key={key} value={key}>
                 {name}
               </option>
             ))}
           </select>
-  
+            <div className={style.btnContainer}>
+            <button onClick={()=>setCurrentView(categories_aerial)} className={style.btn}><TopView/></button>
+            <button onClick={()=>setCurrentView(categories_3d)} className={style.btn}><Isometric/></button>
+            <button onClick={()=>setOpenModal(true)} className={style.btn}><Help/></button>
+            </div>
+            </div>
           {/* Assets Display */}
           <div
             className={style.assetsDisplay}
           >
-            {categories[selectedCategory].data.map((src, index) => (
+            {currentView[selectedCategory].data.map((src, index) => (
               <div
                 key={index}
                 onClick={() => setSelectedAsset((prev) => [...prev, src])}

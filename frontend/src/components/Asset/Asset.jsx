@@ -21,7 +21,7 @@ const Asset = ({ src, handleRemoveAsset, clear }) => {
   const handleReduce = () => {setHeight((prev)=>prev-10); setWidth((prev)=>prev-10)};
   const handleMirror = () => setMirrorDeg((prev)=>prev+180);
 
-useEffect(()=>console.log(visible), [visible])
+
 useEffect(()=>{
   if (clear === true) {
   setVisible(false);

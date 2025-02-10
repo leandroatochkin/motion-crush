@@ -52,7 +52,7 @@ const Canvas = ({ children, handleClearPanel, handleClearCanva }) => {
             zIndex: '999999' // Hidden during normal rendering
           }}
         >
-          {`Imagen compuesta por ${userName}`}
+          {`Motion-Crush 1.0`}
         </div>
       </div>
       <div
@@ -65,15 +65,15 @@ const Canvas = ({ children, handleClearPanel, handleClearCanva }) => {
         }}
       >
         {/* Screenshot Button */}
-        <button onClick={handleScreenshot}>
+        <button onClick={handleScreenshot} className={style.canvaBtn}>
           <Download />
         </button>
         {/* Clear Panel Button */}
-        <button onClick={handleClearPanel}>
+        <button onClick={handleClearPanel} className={style.canvaBtn}>
           <ClearPanel />
         </button>
         {/* Clear Canvas Button */}
-        <button onClick={handleClearCanva}>
+        <button onClick={handleClearCanva} className={style.canvaBtn}>
           <Eraser />
         </button>
       </div>

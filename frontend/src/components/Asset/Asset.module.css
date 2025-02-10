@@ -6,15 +6,18 @@
         width:  30vw;
         z-index: 999;
         position: absolute;
-        background-color: red;
+        gap: 2px;
     }
 
     .panelBtn{
-        width: 10%;
         display: flex;
         justify-content: center;
-        align-items: center;
-        
+        align-items: center; 
+    }
+
+    .panelBtn > * {
+        width: 15px;
+        height: 15px;
     }
 }
 @media only screen and (min-width: 768px){

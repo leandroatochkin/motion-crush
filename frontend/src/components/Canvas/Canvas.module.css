@@ -9,6 +9,17 @@
     .container{
         height: 50vh;
     }
+
+    .canvaBtn{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+
+    .canvaBtn > * {
+        height: 15px;
+        width: 15px;
+    }
 }   
 
 @media only screen and (min-width: 768px) {

@@ -12,3 +12,6 @@ export {default as ClearPanel} from './ClearPanel';
 export {default as Eraser} from './Eraser';
 export {default as EyeOpen} from './EyeOpen';
 export {default as EyeClosed} from './EyeClosed';
+export {default as Help} from './Help';
+export {default as Isometric} from './Isometric';
+export {default as TopView} from './TopView';
