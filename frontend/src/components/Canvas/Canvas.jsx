@@ -11,6 +11,7 @@ const Canvas = ({ children, handleClearPanel, handleClearCanva }) => {
 
 
   const handleScreenshot = () => {
+    const downloadTitle = prompt('Introduzca el nombre de la imagen')
     if (canvasRef.current) {
       // Temporarily show the watermark for screenshot
       if (watermarkRef.current) {
@@ -21,7 +22,7 @@ const Canvas = ({ children, handleClearPanel, handleClearCanva }) => {
         .then((dataUrl) => {
           const link = document.createElement("a");
           link.href = dataUrl;
-          link.download = "arrangement.jpg";
+          link.download = `${downloadTitle}.jpg`;
           link.click();
         })
         .finally(() => {

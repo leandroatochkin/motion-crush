@@ -59,15 +59,15 @@ useEffect(()=>{
           <div 
           className={style.assetPanel}
           >
-          <button onClick={handleRotateLeft} className={style.panelBtn}><RotateLeft/></button>
-          <button onClick={handleRotateRight} className={style.panelBtn}><RotateRight/></button>
-          <button onClick={handleRotateExtraLeft} className={style.panelBtn}><RotateExtraLeft/></button>
-          <button onClick={handleRotateExtraRight} className={style.panelBtn}><RotateExtraRight/></button>
-          <button onClick={handleBringToFront} className={style.panelBtn}><Hoist/></button>
-          <button onClick={handleEnlarge} className={style.panelBtn}><ZoomIn/></button>
-          <button onClick={handleReduce} className={style.panelBtn}><ZoomOut/></button>
-          <button onClick={handleMirror} className={style.panelBtn}><Mirror/></button>
-          <button onClick={handleRemoveAsset} className={style.panelBtn}><Trash/></button>
+          <button onClick={handleRotateLeft} onTouchStart={handleRotateLeft} className={style.panelBtn}><RotateLeft/></button>
+          <button onClick={handleRotateRight} onTouchStart={handleRotateRight} className={style.panelBtn}><RotateRight/></button>
+          <button onClick={handleRotateExtraLeft} onTouchStart={handleRotateExtraLeft} className={style.panelBtn}><RotateExtraLeft/></button>
+          <button onClick={handleRotateExtraRight} onTouchStart={handleRotateExtraRight} className={style.panelBtn}><RotateExtraRight/></button>
+          <button onClick={handleBringToFront} onTouchStart={handleBringToFront} className={style.panelBtn}><Hoist/></button>
+          <button onClick={handleEnlarge} onTouchStart={handleEnlarge} className={style.panelBtn}><ZoomIn/></button>
+          <button onClick={handleReduce} onTouchStart={handleReduce} className={style.panelBtn}><ZoomOut/></button>
+          <button onClick={handleMirror} onTouchStart={handleMirror} className={style.panelBtn}><Mirror/></button>
+          <button onClick={handleRemoveAsset} onTouchStart={handleRemoveAsset}  className={style.panelBtn}><Trash/></button>
           </div>
         </div>
       </div>
