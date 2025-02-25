@@ -21,6 +21,10 @@ const Login = () => {
     const login = (inputUsername, inputPassword) => {
 
         for (const key in users) {
+          if (users[key].username !== inputUsername || users[key].password !== inputPassword){
+            alert('Usuario o contraseña incorrectos.')
+            return
+          }
           if (users[key].username === inputUsername && users[key].password === inputPassword) {
             setLoggedIn(true)
             setUsername(users[key].name)

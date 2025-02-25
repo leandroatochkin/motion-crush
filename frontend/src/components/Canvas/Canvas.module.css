@@ -14,6 +14,8 @@
         display: flex;
         justify-content: center;
         align-items: center;
+        color: black; 
+        background: transparent;
     }
 
     .canvaBtn > * {
@@ -29,5 +31,9 @@
         height: 99vh;
         border: 5px dashed lightgray;
         overflow: hidden
+    }
+    .canvaBtn{
+        color: black; 
+        background: transparent;
     }
 }
