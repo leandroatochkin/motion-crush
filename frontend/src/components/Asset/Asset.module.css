@@ -3,7 +3,7 @@
     .assetPanel{
         display: grid;
         grid-template-columns: repeat(3, 1fr);
-        width:  30vw;
+        width:  45vw;
         z-index: 999;
         position: absolute;
         gap: 2px;
@@ -14,7 +14,8 @@
         justify-content: center;
         align-items: center;
         background: transparent;
-        color: black;  
+        color: black;
+
     }
 
     .panelBtn > * {
@@ -26,14 +27,16 @@
     .assetPanel{
         display: grid;
         grid-template-columns: repeat(4, 1fr);
-        width:  15vw;
+        width:  20vw;
         z-index: 999;
         position: absolute;
         gap: 10px;
+
     }
     .panelBtn{
         background: transparent;
         color: black; 
+
     }
 
 

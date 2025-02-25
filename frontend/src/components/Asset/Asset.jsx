@@ -2,6 +2,10 @@ import React, { useEffect, useState } from "react";
 import Draggable from "react-draggable";
 import { RotateExtraLeft, RotateExtraRight, RotateLeft, RotateRight, ZoomIn, ZoomOut, Trash, Hoist, Mirror } from "../../assets/icons";
 import style from './Asset.module.css'
+import ExpandHeight from "../../assets/icons/ExpandHeight";
+import ExpandWidth from "../../assets/icons/ExpandWidth";
+import ReduceHeight from "../../assets/icons/ReduceHeight";
+import ReduceWidth from "../../assets/icons/ReduceWidth";
 
 const Asset = ({ src, handleRemoveAsset, clear }) => {
   const [rotation, setRotation] = useState(0);
@@ -20,6 +24,10 @@ const Asset = ({ src, handleRemoveAsset, clear }) => {
   const handleEnlarge = () => {setHeight((prev)=>prev+10); setWidth((prev)=>prev+10)};
   const handleReduce = () => {setHeight((prev)=>prev-10); setWidth((prev)=>prev-10)};
   const handleMirror = () => setMirrorDeg((prev)=>prev+180);
+  const handleReduceWidth = () => setWidth((prev)=>prev-20);
+  const handleAugmentWidth = () => setWidth((prev)=>prev+20);
+  const handleReduceHeight = () => setHeight((prev)=>prev-20);
+  const handleAugmentHeight = () => setHeight((prev)=>prev+20);
 
 
 useEffect(()=>{
@@ -67,7 +75,12 @@ useEffect(()=>{
           <button onClick={handleEnlarge} onTouchStart={handleEnlarge} className={style.panelBtn}><ZoomIn/></button>
           <button onClick={handleReduce} onTouchStart={handleReduce} className={style.panelBtn}><ZoomOut/></button>
           <button onClick={handleMirror} onTouchStart={handleMirror} className={style.panelBtn}><Mirror/></button>
+          <button onClick={handleAugmentHeight} onTouchStart={handleAugmentHeight} className={style.panelBtn}><ExpandHeight/></button>
+          <button onClick={handleReduceHeight} onTouchStart={handleReduceHeight} className={style.panelBtn}><ReduceHeight/></button>
+          <button onClick={handleAugmentWidth} onTouchStart={handleAugmentWidth} className={style.panelBtn}><ExpandWidth/></button>
+          <button onClick={handleReduceWidth} onTouchStart={handleReduceWidth}  className={style.panelBtn}><ReduceWidth/></button>
           <button onClick={handleRemoveAsset} onTouchStart={handleRemoveAsset}  className={style.panelBtn}><Trash/></button>
+
           </div>
         </div>
       </div>

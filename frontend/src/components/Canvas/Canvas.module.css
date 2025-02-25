@@ -2,7 +2,7 @@
     .canvasContainer{
         position: relative;
         width: 95vw;
-        height: 50vh;
+        height: 65vh;
         border: 5px dashed lightgray;
         overflow: hidden
     }

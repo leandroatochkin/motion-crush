@@ -1,6 +1,10 @@
 import React from 'react'
 import style from './HelpModal.module.css'
 import { TopView, Isometric, Eraser, ClearPanel, Download, Hoist, Mirror, RotateExtraLeft, RotateExtraRight, RotateLeft, RotateRight, ZoomIn, ZoomOut, Trash } from '../../assets/icons'
+import ExpandHeight from '../../assets/icons/ExpandHeight'
+import ReduceHeight from '../../assets/icons/ReduceHeight'
+import ExpandWidth from '../../assets/icons/ExpandWidth'
+import ReduceWidth from '../../assets/icons/ReduceWidth'
 
 const HelpModal = ({closeFunction}) => {
   return (
@@ -27,7 +31,12 @@ const HelpModal = ({closeFunction}) => {
                 <li><span><RotateRight/></span> - Rotar los elementos 15 grados a la derecha.</li>
                 <li><span><ZoomIn/></span> - Agranda los elementos.</li>
                 <li><span><ZoomOut/></span> - Reduce los elementos.</li>
+                <li><span><ExpandHeight/></span> - Aumenta el alto.</li>
+                <li><span><ReduceHeight/></span> -Reduce el alto.</li>
+                <li><span><ExpandWidth/></span> - Aumenta el ancho.</li>
+                <li><span><ReduceWidth/></span> - Reduce el ancho.</li>
                 <li><span><Trash/></span> - Elimina los elementos seleccionados.</li>
+
             </ul>
             <p><strong>Aunque esta aplicación se puede usar en dispositivos móviles. Lo ideal es usar una computadora.</strong></p>
         </div>

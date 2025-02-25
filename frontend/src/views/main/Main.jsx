@@ -3,23 +3,15 @@ import Canvas from "../../components/Canvas/Canvas";
 import Asset from "../../components/Asset/Asset";
 import {
   animals_3d,
-  arrows_3d,
-  bikes_3d,
-  bridges_3d,
-  busses_3d,
-  cars_3d,
-  events_3d,
-  pedestrians_3d,
-  streets_3d,
-  trafficlights_3d,
-  trucks_3d,
   animals_aerial,
   bikes_aerial,
   busses_aerial,
   cars_aerial,
   events_aerial,
+  signals_aerial,
   streets_aerial,
-  trucks_aerial
+  trucks_aerial,
+  arrows_aerial
 } from '../../utils/data';
 import style from './Main.module.css'
 import { userStore } from "../../utils/userStore";
@@ -30,35 +22,26 @@ import HelpModal from "../../components/HelpModal/HelpModal";
 // Mapping internal keys to human-readable labels
 const categories_3d = {
   animals: { name: "Animales", data: animals_3d },
-  arrows: { name: "Flechas", data: arrows_3d },
-  bikes: { name: "Bicicletas & Motos", data: bikes_3d },
-  bridges: { name: "Puentes", data: bridges_3d },
-  busses: { name: "Colectivos", data: busses_3d },
-  cars: { name: "Autos", data: cars_3d },
-  events: { name: "Eventos", data: events_3d },
-  pedestrians: { name: "Peatones", data: pedestrians_3d },
-  streets: { name: "Calles & Rutas", data: streets_3d },
-  trafficlights: { name: "Semáforos", data: trafficlights_3d },
-  trucks: { name: "Camiones", data: trucks_3d },
 };
 
 
 const categories_aerial = {
   animals: { name: "Animales", data: animals_aerial },
   bikes: { name: "Bicicletas & Motos", data: bikes_aerial },
-  bridges: { name: "Puentes", data: bikes_aerial },
+  arrows: {name: "Flechas", data: arrows_aerial },
   busses: { name: "Colectivos", data: busses_aerial },
   cars: { name: "Autos", data: cars_aerial },
   events: { name: "Eventos", data: events_aerial },
+  signals: { name: "Señalización", data: signals_aerial },
   streets: { name: "Calles & Rutas", data: streets_aerial },
   trucks: { name: "Camiones", data: trucks_aerial },
 };
 
 const Main = () => {
   const [selectedAsset, setSelectedAsset] = useState([]);
-  const [selectedCategory, setSelectedCategory] = useState("cars");
+  const [selectedCategory, setSelectedCategory] = useState("animals"); // Default category
   const [clearAssetPanel, setClearAssetPanel] = useState(false)
-  const [currentView, setCurrentView] = useState(categories_3d)
+  const [currentView, setCurrentView] = useState(categories_aerial)
   const [openModal, setOpenModal] = useState(false)
 
   const loggedIn = userStore((state)=>state.loggedIn)
@@ -79,6 +62,17 @@ const Main = () => {
         setSelectedAsset([])
     }
  }
+
+ const handleCategoryChange = (e) => {
+  const selected = e.target.value;
+  // Only set category if it's a valid option in the current view
+  if (currentView[selected]) {
+    setSelectedCategory(selected);
+  } else {
+    // Fallback if an invalid category is selected
+    setSelectedCategory("animals");
+  }
+};
 
   return (
     <>
@@ -108,17 +102,17 @@ const Main = () => {
           {/* Category Selector */}
               <div className={style.selectContainer}>
               <select
-            onChange={(e) => setSelectedCategory(e.target.value)}
-            value={selectedCategory}
-            className={style.categorySelector}
-  
-          >
-            {Object.entries(currentView).map(([key, { name }]) => (
-              <option key={key} value={key}>
-                {name}
-              </option>
-            ))}
-          </select>
+  onChange={handleCategoryChange}
+  value={selectedCategory}
+  className={style.categorySelector}
+>
+  {Object.entries(currentView).map(([key, { name }]) => (
+    <option key={key} value={key}>
+      {name}
+    </option>
+  ))}
+</select>
+
             <div className={style.btnContainer}>
             <button onClick={()=>setCurrentView(categories_aerial)} className={style.btn}><TopView/></button>
             <button onClick={()=>setCurrentView(categories_3d)} className={style.btn}><Isometric/></button>
@@ -126,19 +120,19 @@ const Main = () => {
             </div>
             </div>
           {/* Assets Display */}
-          <div
-            className={style.assetsDisplay}
-          >
-            {currentView[selectedCategory].data.map((src, index) => (
-              <div
-                key={index}
-                onClick={() => setSelectedAsset((prev) => [...prev, src])}
-                className={style.assetItem}
-                style={{
-                  backgroundImage: `url(${src})`,
-                }}
-              ></div>
-            ))}
+          <div className={style.assetsDisplay}>
+  {currentView[selectedCategory] && currentView[selectedCategory].data
+    ? currentView[selectedCategory].data.map((src, index) => (
+        <div
+          key={index}
+          onClick={() => setSelectedAsset((prev) => [...prev, src])}
+          className={style.assetItem}
+          style={{
+            backgroundImage: `url(${src})`,
+          }}
+        ></div>
+      ))
+    : <p>No assets available</p>} {/* Fallback message */}
           </div>
         </div>
   
