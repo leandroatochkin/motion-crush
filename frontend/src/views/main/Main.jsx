@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Canvas from "../../components/Canvas/Canvas";
 import Asset from "../../components/Asset/Asset";
+import TextAsset from "../../components/Asset/TextAsset";
 import {
   animals_3d,
   animals_aerial,
@@ -11,7 +12,8 @@ import {
   signals_aerial,
   streets_aerial,
   trucks_aerial,
-  arrows_aerial
+  arrows_aerial,
+  people_aerial
 } from '../../utils/data';
 import style from './Main.module.css'
 import { userStore } from "../../utils/userStore";
@@ -32,6 +34,7 @@ const categories_aerial = {
   busses: { name: "Colectivos", data: busses_aerial },
   cars: { name: "Autos", data: cars_aerial },
   events: { name: "Eventos", data: events_aerial },
+  people: { name: "Personas", data: people_aerial },
   signals: { name: "Señalización", data: signals_aerial },
   streets: { name: "Calles & Rutas", data: streets_aerial },
   trucks: { name: "Camiones", data: trucks_aerial },
@@ -43,6 +46,7 @@ const Main = () => {
   const [clearAssetPanel, setClearAssetPanel] = useState(false)
   const [currentView, setCurrentView] = useState(categories_aerial)
   const [openModal, setOpenModal] = useState(false)
+  const [textAssets, setTextAssets] = useState([]);
 
   const loggedIn = userStore((state)=>state.loggedIn)
 
@@ -50,7 +54,9 @@ const Main = () => {
     setSelectedAsset(selectedAsset.filter((asset, i) => i !== index));
   };
 
-
+  const handleRemoveTextAsset = (index) => {
+    setTextAssets(textAssets.filter((_, i) => i !== index));
+  };
 
   const handleClearPanel = () =>{
     setClearAssetPanel(true)
@@ -59,7 +65,8 @@ const Main = () => {
  
  const handleClearCanva = () => {
     if(confirm('¿Está seguro que quiere borrar todo?')){
-        setSelectedAsset([])
+        setSelectedAsset([]);
+        setTextAssets([]);
     }
  }
 
@@ -92,6 +99,13 @@ const Main = () => {
                   clear={clearAssetPanel}
                 />
               ))}
+            {textAssets.map((_, index) => (
+              <TextAsset
+                key={index}
+                handleRemoveAsset={() => handleRemoveTextAsset(index)}
+                clear={clearAssetPanel}
+              />
+            ))}
           </Canvas>
         </div>
   
@@ -117,6 +131,7 @@ const Main = () => {
             <button onClick={()=>setCurrentView(categories_aerial)} className={style.btn}><TopView/></button>
             <button onClick={()=>setCurrentView(categories_3d)} className={style.btn}><Isometric/></button>
             <button onClick={()=>setOpenModal(true)} className={style.btn}><Help/></button>
+            <button onClick={() => setTextAssets([...textAssets, {}])} className={style.btn}>➕ Texto</button>
             </div>
             </div>
           {/* Assets Display */}
@@ -151,7 +166,11 @@ const Main = () => {
       </div>
     ) : (
         <div className={style.appContainer}>
-                <h1>Por favor loguearse</h1>
+                <h1
+                style={{
+                  color: "black",
+                }}
+                >Por favor loguearse</h1>
         </div>
     )}
     </>

@@ -35,15 +35,25 @@
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     grid-gap: 10px;
-    height: 100%;
-    width: 50%;
+    height: 90%;
+    width: 90%;
+    background: #ccc;
+    border-radius: 8px;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    overflow-y: auto;
+    scrollbar-width: none;
   }
   
   .assetItem {
     background-size: cover;
     width: auto;
-    height: 50px;
+    height: 150px;
     cursor: pointer;
+  }
+
+  .assetItem:hover{
+    scale: 1.1;
   }
   
   .diagonalBar {
@@ -57,7 +67,6 @@
     margin-top: -22%;
     height: 95%;
     clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
-    background-color: red;
   }
   
   .diagonalBarTitle {
@@ -67,7 +76,8 @@
     padding-top: 60%;
     padding-left: 70%;
     z-index: 9999;
-    font-family: "Grechen Fuemen", serif;;
+    font-family: "Grechen Fuemen", serif;
+    color: darkslategray;
   }
 
   .selectContainer{

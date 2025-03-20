@@ -17,6 +17,8 @@ export const arrows_aerial = [
     '/aerial/arrows/flecha1.png',
     '/aerial/arrows/flecha2.png',
     '/aerial/arrows/flecha3.png',
+    '/aerial/arrows/flecha4.png',
+    '/aerial/arrows/flecha5.png',
 ];
 
 
@@ -37,6 +39,8 @@ export const busses_aerial = [
     '/aerial/busses/bus3.png',
     '/aerial/busses/bus4.png',
     '/aerial/busses/bus5.png',
+    '/aerial/busses/bus6.png',
+    '/aerial/busses/bus7.png',
 ];
 
 export const cars_aerial = [
@@ -46,26 +50,8 @@ export const cars_aerial = [
     '/aerial/cars/auto4.png',
     '/aerial/cars/auto5.png',
     '/aerial/cars/auto6.png',
-    '/aerial/cars/auto7.png',
-    '/aerial/cars/auto8.png',
-    '/aerial/cars/auto9.png',
-    '/aerial/cars/auto10.png',
-    '/aerial/cars/auto11.png',
-    '/aerial/cars/auto12.png',
-    '/aerial/cars/auto13.png',
-    '/aerial/cars/auto14.png',
-    '/aerial/cars/auto15.png',
-    '/aerial/cars/auto16.png',
-    '/aerial/cars/auto17.png',
-    '/aerial/cars/auto18.png',
-    '/aerial/cars/auto19.png',
-    '/aerial/cars/auto20.png',
     '/aerial/cars/auto21.png',
     '/aerial/cars/auto22.png',
-    '/aerial/cars/auto23.png',
-    '/aerial/cars/auto24.png',
-    '/aerial/cars/auto25.png',
-    '/aerial/cars/auto26.png',
     '/aerial/cars/auto27.png',
     '/aerial/cars/auto28.png',
     '/aerial/cars/auto29.png',
@@ -76,6 +62,12 @@ export const events_aerial = [
     '/aerial/events/choque2.png',
     '/aerial/events/choque3.png',
 ];
+
+export const people_aerial = [
+    '/aerial/people/persona1.png',
+    '/aerial/people/persona2.png',
+];
+
 
 export const signals_aerial = [
     '/aerial/signals/senal1.png',
@@ -101,7 +93,9 @@ export const signals_aerial = [
     '/aerial/signals/senal21.png',
     '/aerial/signals/senal22.png',
     '/aerial/signals/senal23.png',
-
+    '/aerial/signals/senal24.png',
+    '/aerial/signals/senal25.png',
+    '/aerial/signals/senal26.png',
 ];
 
 export const streets_aerial = [
@@ -117,6 +111,9 @@ export const streets_aerial = [
     '/aerial/streets/calle10.png',
     '/aerial/streets/calle11.png',
     '/aerial/streets/calle12.png',
+    '/aerial/streets/calle13.png',
+    '/aerial/streets/calle14.png',
+    '/aerial/streets/calle15.png',
  
 ];
 

@@ -18,7 +18,7 @@ const Canvas = ({ children, handleClearPanel, handleClearCanva }) => {
         watermarkRef.current.style.display = "block";
       }
 
-      toJpeg(canvasRef.current, { quality: 0.95 })
+      toJpeg(canvasRef.current, { quality: 0.95, backgroundColor: "#ffffff" })
         .then((dataUrl) => {
           const link = document.createElement("a");
           link.href = dataUrl;
