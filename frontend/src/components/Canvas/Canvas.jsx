@@ -3,6 +3,7 @@ import { toJpeg } from "html-to-image";
 import { Download, ClearPanel, Eraser } from "../../assets/icons";
 import { userStore } from "../../utils/userStore";
 import style from "./Canvas.module.css";
+import EditPanel from "../EditPanel/EditPanel";
 
 const Canvas = ({ children, handleClearPanel, handleClearCanva }) => {
   const canvasRef = useRef(null);

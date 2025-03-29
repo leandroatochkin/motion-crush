@@ -57,7 +57,7 @@
   }
   
   .diagonalBar {
-    width: 10%;
+    width: 5%;
     height: 100vh;
     padding: 0;
     margin: 0;
@@ -170,7 +170,6 @@
   .diagonalBarContent {
     top: 0;
     height: 100%;
-    background-color: red;
   }
   
   .diagonalBarTitle {

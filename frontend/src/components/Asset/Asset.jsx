@@ -1,35 +1,20 @@
 import React, { useEffect, useState } from "react";
 import Draggable from "react-draggable";
-import { RotateExtraLeft, RotateExtraRight, RotateLeft, RotateRight, ZoomIn, ZoomOut, Trash, Hoist, Mirror } from "../../assets/icons";
-import style from './Asset.module.css'
-import ExpandHeight from "../../assets/icons/ExpandHeight";
-import ExpandWidth from "../../assets/icons/ExpandWidth";
-import ReduceHeight from "../../assets/icons/ReduceHeight";
-import ReduceWidth from "../../assets/icons/ReduceWidth";
 
-const Asset = ({ src, handleRemoveAsset, clear }) => {
-  const [rotation, setRotation] = useState(0);
-  const [zIndex, setZIndex] = useState(1);
-  const [width, setWidth] = useState(300);
-  const [height, setHeight] = useState(200);
-  const [mirrorDeg, setMirrorDeg] = useState(0)
-  const [visible, setVisible] = useState(false);
-  const [cursor, setCursor] = useState("grab");
+const Asset = ({ 
+  src, 
+  handleRemoveAsset, 
+  id,
+  clear,
+  rotation,
+  height,
+  width,
+  mirrorDeg,
+  zIndex,
+  style
 
-  const handleRotateLeft = () => setRotation((prev) => prev - 15);
-  const handleRotateRight = () => setRotation((prev) => prev + 15);
-  const handleRotateExtraLeft = () => setRotation((prev) => prev - 45);
-  const handleRotateExtraRight = () => setRotation((prev) => prev + 45);
-  const handleBringToFront = () => setZIndex((prev) => prev + 1);
-  const handleEnlarge = () => {setHeight((prev)=>prev+10); setWidth((prev)=>prev+10)};
-  const handleReduce = () => {setHeight((prev)=>prev-10); setWidth((prev)=>prev-10)};
-  const handleMirror = () => setMirrorDeg((prev)=>prev+180);
-  const handleReduceWidth = () => setWidth((prev)=>prev-20);
-  const handleAugmentWidth = () => setWidth((prev)=>prev+20);
-  const handleReduceHeight = () => setHeight((prev)=>prev-20);
-  const handleAugmentHeight = () => setHeight((prev)=>prev+20);
-
-
+}) => {
+const [cursor, setCursor] = useState("grab");
 useEffect(()=>{
   if (clear === true) {
   setVisible(false);
@@ -51,38 +36,44 @@ useEffect(()=>{
         }}
         onClick={() => setCursor("grabbing")}
       >
-        
-        <div 
-        onMouseEnter={()=>setVisible(true)}
-        onTouchStart={()=>setVisible(true)}
-        >
-        <img src={src} alt="Asset" style={{ pointerEvents: "none", transform: `rotateZ(${rotation}deg) rotateY(${mirrorDeg}deg)`, height: `${height}px`, width: `${width}px` }} />    
-        </div>
-        
-        <div 
-        style={visible ? {opacity: '1'} : {opacity: '0'}}
-        onMouseLeave={()=>setVisible(false)}
-        >
+ <div
+  style={{
+    position: "relative",
+    display: "inline-block",
+    border: "1px solid red", // For debugging, remove later
+  }}
+>
+  {/* Glow effect div (placed behind the image) */}
+  <div
+    style={{
+      ...style, // This should contain the glow effect
+      position: "absolute",
+      top: 0,
+      left: 0,
+      width: `${width}px`,
+      height: `${height}px`,
+      zIndex: 0, // Ensures it's behind the image
+    }}
+  ></div>
 
-          <div 
-          className={style.assetPanel}
-          >
-          <button onClick={handleRotateLeft} onTouchStart={handleRotateLeft} className={style.panelBtn}><RotateLeft/></button>
-          <button onClick={handleRotateRight} onTouchStart={handleRotateRight} className={style.panelBtn}><RotateRight/></button>
-          <button onClick={handleRotateExtraLeft} onTouchStart={handleRotateExtraLeft} className={style.panelBtn}><RotateExtraLeft/></button>
-          <button onClick={handleRotateExtraRight} onTouchStart={handleRotateExtraRight} className={style.panelBtn}><RotateExtraRight/></button>
-          <button onClick={handleBringToFront} onTouchStart={handleBringToFront} className={style.panelBtn}><Hoist/></button>
-          <button onClick={handleEnlarge} onTouchStart={handleEnlarge} className={style.panelBtn}><ZoomIn/></button>
-          <button onClick={handleReduce} onTouchStart={handleReduce} className={style.panelBtn}><ZoomOut/></button>
-          <button onClick={handleMirror} onTouchStart={handleMirror} className={style.panelBtn}><Mirror/></button>
-          <button onClick={handleAugmentHeight} onTouchStart={handleAugmentHeight} className={style.panelBtn}><ExpandHeight/></button>
-          <button onClick={handleReduceHeight} onTouchStart={handleReduceHeight} className={style.panelBtn}><ReduceHeight/></button>
-          <button onClick={handleAugmentWidth} onTouchStart={handleAugmentWidth} className={style.panelBtn}><ExpandWidth/></button>
-          <button onClick={handleReduceWidth} onTouchStart={handleReduceWidth}  className={style.panelBtn}><ReduceWidth/></button>
-          <button onClick={handleRemoveAsset} onTouchStart={handleRemoveAsset}  className={style.panelBtn}><Trash/></button>
+  {/* Image on top */}
+  <img
+    src={src}
+    alt="Asset"
+    style={{
+      pointerEvents: "none",
+      transform: `rotateZ(${rotation}deg) rotateY(${mirrorDeg}deg)`,
+      height: `${height}px`,
+      width: `${width}px`,
+      position: "absolute",
+      top: 0,
+      left: 0,
+      zIndex: 1, // Ensures it's above the glow effect
+    }}
+  />
+</div>
 
-          </div>
-        </div>
+       
       </div>
     </Draggable>
   );

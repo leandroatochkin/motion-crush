@@ -1,0 +1,13 @@
+.panelBtn{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: transparent;
+    color: black;
+
+}
+
+.panelBtn > * {
+    width: 15px;
+    height: 15px;
+}
